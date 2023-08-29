@@ -8,16 +8,16 @@ function createSessionStore(){
     const store = new mongoDBStore({
         uri: 'mongodb://localhost:27017',
         databaseName: 'PKOnlineShop',
-        collection: 'session' 
+        collection: 'sessions' 
     })
     return store;
 }
 
-function createSessionStoreConfig(){
+function createSessionConfig(){
     return {
     secret: 'super-secret',
     resave:false,
-    saveUninitialized:false,
+    saveUninitialized:true,
     store: createSessionStore(),
     cookie:{
         maxAge: 2 * 24 * 60 * 60 * 1000
@@ -25,4 +25,4 @@ function createSessionStoreConfig(){
     };
 }
 
-module.exports = createSessionStoreConfig;
+module.exports = createSessionConfig;
